@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Joke from "./Joke";
+import jokesData from "./jokesData";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    const app = jokesData.map((joke) => <Joke key={joke.id} joke={joke} />);
+    const randomNum = Math.floor(Math.random() * jokesData.length);
+    console.log(jokesData[randomNum]);
+
+    console.log(randomNum);
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h3>{app}</h3>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
